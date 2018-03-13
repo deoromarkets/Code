@@ -1,0 +1,578 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="deORO_LocalModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="deOROEntities" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="cash_collection" EntityType="deORO_LocalModel.cash_collection" />
+    <EntitySet Name="cash_counter" EntityType="deORO_LocalModel.cash_counter" />
+    <EntitySet Name="cash_status" EntityType="deORO_LocalModel.cash_status" />
+    <EntitySet Name="categories" EntityType="deORO_LocalModel.category" />
+    <EntitySet Name="combo_discount" EntityType="deORO_LocalModel.combo_discount" />
+    <EntitySet Name="combo_discount_detail" EntityType="deORO_LocalModel.combo_discount_detail" />
+    <EntitySet Name="credits" EntityType="deORO_LocalModel.credit" />
+    <EntitySet Name="credit_activity" EntityType="deORO_LocalModel.credit_activity" />
+    <EntitySet Name="credit_user" EntityType="deORO_LocalModel.credit_user" />
+    <EntitySet Name="discounts" EntityType="deORO_LocalModel.discount" />
+    <EntitySet Name="helps" EntityType="deORO_LocalModel.help" />
+    <EntitySet Name="item_group" EntityType="deORO_LocalModel.item_group" />
+    <EntitySet Name="item_group_activity" EntityType="deORO_LocalModel.item_group_activity" />
+    <EntitySet Name="location_service" EntityType="deORO_LocalModel.location_service" />
+    <EntitySet Name="manufacturers" EntityType="deORO_LocalModel.manufacturer" />
+    <EntitySet Name="payments" EntityType="deORO_LocalModel.payment" />
+    <EntitySet Name="planogram_item" EntityType="deORO_LocalModel.planogram_item" />
+    <EntitySet Name="sync_data" EntityType="deORO_LocalModel.sync_data" />
+    <EntitySet Name="synclogs" EntityType="deORO_LocalModel.synclog" />
+    <EntitySet Name="users_deleted" EntityType="deORO_LocalModel.users_deleted" />
+    <EntitySet Name="item_snapshot" EntityType="deORO_LocalModel.item_snapshot" />
+    <EntitySet Name="accountbalancehistories" EntityType="deORO_LocalModel.accountbalancehistory" />
+    <EntitySet Name="shoppingcartdetails" EntityType="deORO_LocalModel.shoppingcartdetail" />
+    <EntitySet Name="subsidy_detail" EntityType="deORO_LocalModel.subsidy_detail" />
+    <EntitySet Name="cash_dispense" EntityType="deORO_LocalModel.cash_dispense" />
+    <EntitySet Name="fast_touch" EntityType="deORO_LocalModel.fast_touch" />
+    <EntitySet Name="user_snapshot" EntityType="deORO_LocalModel.user_snapshot" />
+    <EntitySet Name="login_activity" EntityType="deORO_LocalModel.login_activity" />
+    <EntitySet Name="subsidies" EntityType="deORO_LocalModel.subsidy" />
+    <EntitySet Name="users" EntityType="deORO_LocalModel.user" />
+    <EntitySet Name="event_log" EntityType="deORO_LocalModel.event_log" />
+    <EntitySet Name="device_error" EntityType="deORO_LocalModel.device_error" />
+    <EntitySet Name="transaction_error" EntityType="deORO_LocalModel.transaction_error" />
+    <EntitySet Name="items" EntityType="deORO_LocalModel.item" />
+    <EntitySet Name="shoppingcarts" EntityType="deORO_LocalModel.shoppingcart" />
+  </EntityContainer>
+  <EntityType Name="cash_collection">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="pkid" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="userpkid" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="comments" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="created_date_time" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="cash_counter">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="pkid" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="cashcollectionpkid" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="cash_type" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="amount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="created_date_time" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="cash_status">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="pkid" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="description" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="amount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="count" Type="Int32" />
+    <Property Name="is_full" Type="Byte" />
+    <Property Name="group" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="event" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="created_date_time" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="category">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="code" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="name" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="description" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="pick_order" Type="Int32" />
+    <Property Name="parentid" Type="Int32" />
+    <Property Name="image" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="combo_discount">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="category" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="type" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="description" Type="String" MaxLength="1024" Unicode="true" FixedLength="false" />
+    <Property Name="date_from" Type="DateTime" Precision="3" />
+    <Property Name="date_to" Type="DateTime" Precision="3" />
+    <Property Name="time_from" Type="String" MaxLength="16" Unicode="true" FixedLength="false" />
+    <Property Name="time_to" Type="String" MaxLength="16" Unicode="true" FixedLength="false" />
+    <Property Name="monday" Type="Byte" />
+    <Property Name="tuesday" Type="Byte" />
+    <Property Name="wednesday" Type="Byte" />
+    <Property Name="thursday" Type="Byte" />
+    <Property Name="friday" Type="Byte" />
+    <Property Name="saturday" Type="Byte" />
+    <Property Name="sunday" Type="Byte" />
+    <Property Name="percent" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="amount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="is_active" Type="Byte" />
+  </EntityType>
+  <EntityType Name="combo_discount_detail">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="combodiscountid" Type="Int32" Nullable="false" />
+    <Property Name="entityid" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="credit">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="description" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="type" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="amount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="expiry" Type="Int32" />
+    <Property Name="interval" Type="Int32" />
+    <Property Name="effective_date" Type="DateTime" Precision="0" />
+    <Property Name="end_date" Type="DateTime" Precision="0" />
+    <Property Name="is_active" Type="Byte" />
+  </EntityType>
+  <EntityType Name="credit_activity">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="pkid" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="creditid" Type="Int32" />
+    <Property Name="userpkid" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="amount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="expiry_date" Type="DateTime" Precision="3" />
+    <Property Name="credit_claimed" Type="Byte" />
+    <Property Name="credit_claimed_date" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="credit_user">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="creditid" Type="Int32" />
+    <Property Name="userpkid" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="discount">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="type" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="description" Type="String" MaxLength="1024" Unicode="true" FixedLength="false" />
+    <Property Name="date_from" Type="DateTime" Precision="3" />
+    <Property Name="date_to" Type="DateTime" Precision="3" />
+    <Property Name="time_from" Type="String" MaxLength="16" Unicode="true" FixedLength="false" />
+    <Property Name="time_to" Type="String" MaxLength="16" Unicode="true" FixedLength="false" />
+    <Property Name="monday" Type="Byte" />
+    <Property Name="tuesday" Type="Byte" />
+    <Property Name="wednesday" Type="Byte" />
+    <Property Name="thursday" Type="Byte" />
+    <Property Name="friday" Type="Byte" />
+    <Property Name="saturday" Type="Byte" />
+    <Property Name="sunday" Type="Byte" />
+    <Property Name="percent" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="amount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="is_active" Type="Byte" />
+  </EntityType>
+  <EntityType Name="help">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="key" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="title" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="help_text" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="video" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="item_group">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="group" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="camera" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="item_group_activity">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="itemgroupid" Type="Int32" />
+    <Property Name="created_date_time" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="location_service">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="pkid" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="userpkid" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="event" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="completed" Type="Byte" />
+    <Property Name="comments" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="created_date_time" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="manufacturer">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="code" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="payment">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="pkid" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="shoppingcartpkid" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="source" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="amount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="routing" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="created_date_time" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="planogram_item">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="type" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="order" Type="Int32" />
+    <Property Name="data" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="sync_data">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="type" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="status" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="date_time" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="synclog">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="description" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="type" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="message" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="createddatetime" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="users_deleted">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="pkid" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="userpkid" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="email" Type="String" MaxLength="75" Unicode="true" FixedLength="false" />
+    <Property Name="first_name" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="last_name" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="address" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
+    <Property Name="city" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="state" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="zip" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="phone" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="amount_to_refund" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="created_date_time" Type="DateTime" Precision="3" />
+    <Property Name="created_by_id" Type="Int32" />
+  </EntityType>
+  <EntityType Name="item_snapshot">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="itemid" />
+    <Property Type="String" Name="pkid" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="manufacturerid" />
+    <Property Type="Int32" Name="categoryid" />
+    <Property Type="Int32" Name="discountid" />
+    <Property Type="String" Name="upc" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="name" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="barcode" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="description" MaxLength="1204" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="quantity" />
+    <Property Type="Int32" Name="stale" />
+    <Property Type="Int32" Name="short" />
+    <Property Type="Int32" Name="count" />
+    <Property Type="Decimal" Name="unitcost" Precision="18" Scale="2" />
+    <Property Type="String" Name="avgshelflife" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="pickorder" />
+    <Property Type="Byte" Name="is_taxable" />
+    <Property Type="Decimal" Name="price" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="tax" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="price_tax_included" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="tax_percent" Precision="18" Scale="3" />
+    <Property Type="Decimal" Name="crv" Precision="18" Scale="2" />
+    <Property Type="Byte" Name="has_barcode" />
+    <Property Type="String" Name="image" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="itemgroupid" />
+    <Property Type="DateTime" Name="schedule_date" Precision="0" />
+    <Property Type="DateTime" Name="created_date_time" Precision="3" />
+  </EntityType>
+  <EntityType Name="accountbalancehistory">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="pkid" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="userpkid" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="shoppingcartpkid" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="Decimal" Name="account_balance" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="amount" Precision="18" Scale="2" />
+    <Property Type="String" Name="description" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="created_date_time" Precision="3" />
+  </EntityType>
+  <EntityType Name="shoppingcartdetail">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="pkid" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="itemid" />
+    <Property Type="String" Name="shoppingcartpkid" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="barcode" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="Decimal" Name="price" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="tax" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="price_tax_included" Precision="18" Scale="2" />
+    <Property Type="String" Name="discount_description" MaxLength="1024" FixedLength="false" Unicode="true" />
+    <Property Type="Decimal" Name="discount_percentage" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="discount_price" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="discount_tax" Precision="18" Scale="2" />
+    <Property Type="String" Name="subsidy_description" MaxLength="1024" FixedLength="false" Unicode="true" />
+    <Property Type="Decimal" Name="subsidy_percentage" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="subsidy_price" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="subsidy_tax" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="original_price" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="original_tax" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="crv" Precision="18" Scale="2" />
+    <Property Type="DateTime" Name="created_date_time" Precision="3" />
+  </EntityType>
+  <EntityType Name="subsidy_detail">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="Int32" Name="subsidyid" Nullable="false" />
+    <Property Type="Int32" Name="entityid" Nullable="false" />
+  </EntityType>
+  <EntityType Name="cash_dispense">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="pkid" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="shoppingcartpkid" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="group" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="type" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Type="Decimal" Name="amount" Precision="18" Scale="2" />
+    <Property Type="String" Name="source" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="created_date_time" Precision="3" />
+  </EntityType>
+  <EntityType Name="fast_touch">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="itemid" />
+    <Property Type="String" Name="category" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="image" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="order" />
+  </EntityType>
+  <EntityType Name="user_snapshot">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="pkid" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="username" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="first_name" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="last_name" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="email" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="password" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="salt" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="Byte" Name="is_staff" Nullable="false" />
+    <Property Type="Byte" Name="is_active" />
+    <Property Type="Byte" Name="is_superuser" />
+    <Property Type="DateTime" Name="last_login" Precision="3" />
+    <Property Type="DateTime" Name="date_joined" Precision="3" />
+    <Property Type="String" Name="applicationname" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="Byte" Name="is_approved" />
+    <Property Type="Byte" Name="is_online" />
+    <Property Type="DateTime" Name="created_date_time" Precision="3" />
+    <Property Type="DateTime" Name="last_updated_on" Precision="3" />
+    <Property Type="Int32" Name="last_updated_by_id" />
+    <Property Type="Byte" Name="is_lockedout" />
+    <Property Type="DateTime" Name="lastlockedoutdate" Precision="3" />
+    <Property Type="Int32" Name="failedpasswordattemptcount" />
+    <Property Type="DateTime" Name="lastlogindate" Precision="3" />
+    <Property Type="DateTime" Name="lastpasswordchangedate" Precision="3" />
+    <Property Type="String" Name="lastlogintype" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="enrolled_fmd1" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="finger_id1" />
+    <Property Type="String" Name="enrolled_fmd2" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="finger_id2" />
+    <Property Type="String" Name="enrolled_fmd3" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="finger_id3" />
+    <Property Type="String" Name="enrolled_fmd4" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="finger_id4" />
+    <Property Type="DateTime" Name="lastfmdchangeddate" Precision="3" />
+    <Property Type="Decimal" Name="account_balance" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="lastaccountbalancechangedamount" Precision="18" Scale="2" />
+    <Property Type="DateTime" Name="lastaccountbalancechangeddate" Precision="3" />
+    <Property Type="String" Name="lastaccountbalancechangeddescription" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="barcode" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="login_activity">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="pkid" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="userpkid" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="method" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="created_date_time" Precision="3" />
+  </EntityType>
+  <EntityType Name="subsidy">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="category" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="type" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="description" MaxLength="1024" FixedLength="false" Unicode="false" />
+    <Property Type="Decimal" Name="percent" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="amount" Precision="18" Scale="2" />
+    <Property Type="Byte" Name="is_active" />
+    <Property Type="DateTime" Name="created_date_time" Precision="3" />
+    <Property Type="DateTime" Name="modified_date_time" Precision="3" />
+  </EntityType>
+  <EntityType Name="user">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="pkid" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="username" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="first_name" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="last_name" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="email" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="password" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="salt" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="Byte" Name="is_staff" Nullable="false" />
+    <Property Type="Byte" Name="is_active" />
+    <Property Type="Byte" Name="is_superuser" />
+    <Property Type="DateTime" Name="last_login" Precision="3" />
+    <Property Type="DateTime" Name="date_joined" Precision="3" />
+    <Property Type="String" Name="applicationname" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="Byte" Name="is_approved" />
+    <Property Type="Byte" Name="is_online" />
+    <Property Type="DateTime" Name="created_date_time" Precision="3" />
+    <Property Type="DateTime" Name="last_updated_on" Precision="3" />
+    <Property Type="Int32" Name="last_updated_by_id" />
+    <Property Type="Byte" Name="is_lockedout" />
+    <Property Type="DateTime" Name="lastlockedoutdate" Precision="3" />
+    <Property Type="Int32" Name="failedpasswordattemptcount" />
+    <Property Type="DateTime" Name="lastlogindate" Precision="3" />
+    <Property Type="DateTime" Name="lastpasswordchangedate" Precision="3" />
+    <Property Type="String" Name="lastlogintype" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="enrolled_fmd1" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="finger_id1" />
+    <Property Type="String" Name="enrolled_fmd2" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="finger_id2" />
+    <Property Type="String" Name="enrolled_fmd3" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="finger_id3" />
+    <Property Type="String" Name="enrolled_fmd4" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="finger_id4" />
+    <Property Type="DateTime" Name="lastfmdchangeddate" Precision="3" />
+    <Property Type="Decimal" Name="account_balance" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="lastaccountbalancechangedamount" Precision="18" Scale="2" />
+    <Property Type="DateTime" Name="lastaccountbalancechangeddate" Precision="3" />
+    <Property Type="String" Name="lastaccountbalancechangeddescription" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="barcode" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="Decimal" Name="payroll_balance" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="lastpayrollbalancechangedamount" Precision="18" Scale="2" />
+    <Property Type="DateTime" Name="lastpayrollbalancechangeddate" Precision="3" />
+    <Property Type="String" Name="lastpayrollbalancechangeddescription" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="gender" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="dob" Precision="0" />
+    <Property Type="Int32" Name="sync_vector" />
+  </EntityType>
+  <EntityType Name="event_log">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="pkid" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="sourceid" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="source" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="description" MaxLength="512" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="userpkid" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="created_date_time" Precision="3" />
+    <Property Type="String" Name="code" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="device_error">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="pkid" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="source" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="code" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="description" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="created_date_time" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="transaction_error">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="pkid" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="sourceid" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="code" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="source" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="description" MaxLength="512" FixedLength="false" Unicode="true" />
+    <Property Type="Decimal" Name="amount" Precision="18" Scale="2" />
+    <Property Type="DateTime" Name="created_date_time" Precision="3" />
+  </EntityType>
+  <EntityType Name="item">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="Int32" Name="manufacturerid" />
+    <Property Type="Int32" Name="categoryid" />
+    <Property Type="Int32" Name="discountid" />
+    <Property Type="String" Name="upc" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="name" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="barcode" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="description" MaxLength="1204" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="quantity" />
+    <Property Type="Int32" Name="stale" />
+    <Property Type="Int32" Name="short" />
+    <Property Type="Int32" Name="count" />
+    <Property Type="Decimal" Name="unitcost" Precision="18" Scale="2" />
+    <Property Type="String" Name="avgshelflife" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="pickorder" />
+    <Property Type="Byte" Name="is_taxable" />
+    <Property Type="Decimal" Name="price" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="tax" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="price_tax_included" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="tax_percent" Precision="18" Scale="3" />
+    <Property Type="Decimal" Name="crv" Precision="18" Scale="2" />
+    <Property Type="Byte" Name="has_barcode" />
+    <Property Type="String" Name="image" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="itemgroupid" />
+  </EntityType>
+  <EntityType Name="shoppingcart">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="pkid" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="userpkid" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="status" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="created_date_time" Precision="3" />
+  </EntityType>
+</Schema>
